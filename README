@@ -1,0 +1,32 @@
+Croogo Ggeo  plugin
+------------------------------
+Geocode your nodes
+
+
+Requirements
+------------------------------
+- Google maps api key
+
+
+How to install
+------------------------------
+- Log in to admin panel
+- Go to Extensions > Plugins page
+- Upload the zip file (available here)
+- Click on tick/cross icon of 'Ggeo' for activating or deactivating the plugin
+
+All tables are created automatically by config/schema files
+
+
+Settings
+------------------------------
+In Extensions->Ggeo set
+- your google maps api key (available here http://code.google.com/intl/sk/apis/maps/signup.html)
+- default position for map, comma separated latitude and longitude
+
+How to use
+------------------------------
+Admin:
+Click on tab 'Geos' in node edit page,
+then click on desired position on map.
+

@@ -1,0 +1,9 @@
+name: Ggeo
+description: Geocode your nodes
+
+author: Juraj Jancuska
+authorEmail: jjancuska@gmail.com
+authorUrl: 
+
+dependencies:
+  plugins:
