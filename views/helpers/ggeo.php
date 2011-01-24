@@ -39,7 +39,7 @@ class GgeoHelper extends AppHelper {
         public function afterSetNode() {
 
                 $this->Layout->setNodeField('body',
-                        $this->Layout->node('title') . $this->Layout->View->element('simple_map', array('node' => $this->Layout->node, 'plugin' => 'ggeo')));
+                        $this->Layout->node('body') . $this->Layout->View->element('simple_map', array('node' => $this->Layout->node, 'plugin' => 'ggeo')));
 
         }
 
