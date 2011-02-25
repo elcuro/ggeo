@@ -31,17 +31,5 @@ class GgeoHelper extends AppHelper {
 
         }
 
-        /**
-         * Add map to view
-         *
-         * @return void
-         */
-        public function afterSetNode() {
-
-                $this->Layout->setNodeField('body',
-                        $this->Layout->node('body') . $this->Layout->View->element('simple_map', array('node' => $this->Layout->node, 'plugin' => 'ggeo')));
-
-        }
-
 }
 ?>
