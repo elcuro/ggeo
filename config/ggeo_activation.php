@@ -143,6 +143,8 @@ class GgeoActivation {
 
                 // remove ggeomap block
                 $controller->Block->deleteAll(array('Block.alias' => $this->BlockAlias));
+                // remove config
+                $controller->Setting->deleteKey('Ggeo');
         }
 
         /**
