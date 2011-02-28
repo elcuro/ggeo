@@ -22,11 +22,16 @@ Settings
 ------------------------------
 In Extensions->Ggeo set
 - your google maps api key (available here http://code.google.com/intl/sk/apis/maps/signup.html)
-- default position for map, comma separated latitude and longitude
+- default position for map in admin, comma separated latitude and longitude
 
 How to use
 ------------------------------
 Admin:
 Click on tab 'Geos' in node edit page,
 then click on desired position on map.
+Don't remember to save
+
+View:
+Use block in Admin->Blocks with alias "ggeomap" (created during activation)
+Default region for this block is "right".
 
