@@ -24,6 +24,13 @@ class GgeoActivation {
         private $db;
 
         /**
+         * Ggeo map block alias
+         *
+         * @var $this GgeoActivation
+         */
+        private $BlockAlias = 'ggeomap';
+
+        /**
          * Constructor
          *
          * @return vodi
@@ -88,6 +95,16 @@ class GgeoActivation {
                     'editable' => 1, 'description' => __('Default comma separated latitude,longitude', true))
                 );
 
+                // simple map block
+                if (!$controller->Block->save(array(
+                        'region_id' => 4, // defalt "right" region
+                        'title' => 'Map',
+                        'alias' => $this->BlockAlias,
+                        'body' => '[element:simple_map plugin="Ggeo"]',
+                        'show_title' => 1,
+                        'status' => 1
+                        ))) return false;
+
         }
 
         /**
@@ -123,6 +140,9 @@ class GgeoActivation {
          * @return void
          */
         public function onDeactivation(&$controller) {
+
+                // remove ggeomap block
+                $controller->Block->deleteAll(array('Block.alias' => $this->BlockAlias));
         }
 
         /**

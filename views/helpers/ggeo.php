@@ -40,7 +40,7 @@ class GgeoHelper extends AppHelper {
          */
         public function map($options) {
 
-                if (!is_null($this->Layout->View->viewVars['node']['GgeoGeo']['id'])) {
+                if (isset($this->Layout->View->viewVars['node']['GgeoGeo']['id'])) {
                         $node = $this->Layout->View->viewVars['node'];
                         $_options = array(
                             'mapType' => 'G_HYBRID_MAP',
