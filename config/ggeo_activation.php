@@ -101,7 +101,7 @@ class GgeoActivation {
                         'title' => 'Map',
                         'alias' => $this->BlockAlias,
                         'body' => '[element:simple_map plugin="Ggeo"]',
-                        'show_title' => 1,
+                        'show_title' => 0,
                         'status' => 1
                         ))) return false;
 
