@@ -95,7 +95,7 @@ class GgeoBehavior extends ModelBehavior {
                     'relatives' => array(
                         'from_lat' => $default_lat_lon[0],
                         'from_lon' => $default_lat_lon[1],
-                        'distance' => 5
+                        'distance' => 10
                     )
                 );
                 $query = Set::merge($_query, $query);
