@@ -31,7 +31,13 @@ Click on tab 'Geos' in node edit page,
 then click on desired position on map.
 Don't remember to save
 
-View:
-Use block in Admin->Blocks with alias "ggeomap" (created during activation)
+View map:
+Use block in Admin->Blocks with alias "ggeo_map" (created during activation)
 Default region for this block is "right".
+Map is available only in NodesController->View action
+
+View relatives:
+Use block in Admin->Blocks with alias "ggeo_relatives" (created during activation)
+Default region for this block is "right".
+Relatives is available only in NodesController->View action
 

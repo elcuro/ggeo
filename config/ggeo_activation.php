@@ -24,13 +24,6 @@ class GgeoActivation {
         private $db;
 
         /**
-         * Ggeo map block alias
-         *
-         * @var $this GgeoActivation
-         */
-        private $BlockAlias = 'ggeomap';
-
-        /**
          * Constructor
          *
          * @return vodi
@@ -99,8 +92,18 @@ class GgeoActivation {
                 if (!$controller->Block->save(array(
                         'region_id' => 4, // defalt "right" region
                         'title' => 'Map',
-                        'alias' => $this->BlockAlias,
+                        'alias' => 'ggeo_map',
                         'body' => '[element:simple_map plugin="Ggeo"]',
+                        'show_title' => 0,
+                        'status' => 1
+                        ))) return false;
+                // relatives block
+                $controller->Block->create();
+                if (!$controller->Block->save(array(
+                        'region_id' => 4, // defalt "right" region
+                        'title' => 'Relatives',
+                        'alias' => 'ggeo_relatives',
+                        'body' => '[element:relatives plugin="Ggeo"]',
                         'show_title' => 0,
                         'status' => 1
                         ))) return false;
@@ -142,7 +145,9 @@ class GgeoActivation {
         public function onDeactivation(&$controller) {
 
                 // remove ggeomap block
-                $controller->Block->deleteAll(array('Block.alias' => $this->BlockAlias));
+                $controller->Block->deleteAll(array('Block.alias' => 'ggeo_map'));
+                // remove ggeo_relatives block
+                $controller->Block->deleteAll(array('Block.alias' => 'ggeo_relatives'));
                 // remove config
                 $controller->Setting->deleteKey('Ggeo');
         }
