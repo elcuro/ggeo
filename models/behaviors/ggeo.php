@@ -48,16 +48,11 @@ class GgeoBehavior extends ModelBehavior {
          * @return array
          */
          public function  afterFind(&$model, $results, $primary) {
-                parent::afterFind($model, $results, $primary);
 
-                /*if ($this->__relatives) {
-                        if ($primary && isset($results[0][$model->alias])) {
-                                foreach ($results AS $i => $result) {
-
-                                }
-                        }
+                if (is_array($this->__relatives)) {
+                        $results = $this->__mergeRelatives($model, $results);
                         $this->__relatives = false;
-                }*/
+                }
 
                 return $results;
          }
@@ -109,7 +104,7 @@ class GgeoBehavior extends ModelBehavior {
                 $from_lat = $query['relatives']['from_lat'];
                 $from_lon = $query['relatives']['from_lon'];
                 $distance  = $query['relatives']['distance'];
-                $q = "SELECT node_id, ((ACOS(SIN(".$from_lat." * PI() / 180) * SIN(lat * PI() / 180) + COS(".$from_lat." * PI() / 180) * COS(lat * PI() / 180) * COS((".$from_lon." - lon) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance
+                $q = "SELECT node_id, (((ACOS(SIN(".$from_lat." * PI() / 180) * SIN(lat * PI() / 180) + COS(".$from_lat." * PI() / 180) * COS(lat * PI() / 180) * COS((".$from_lon." - lon) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) * 1.61) AS distance
                         FROM ggeo_geos HAVING distance <= '".$distance."' ORDER BY distance ASC LIMIT 0,20";
                 $res = $model->query($q);
 
@@ -127,6 +122,24 @@ class GgeoBehavior extends ModelBehavior {
                 );
                 return $query;
 
+        }
+
+        /**
+         * Merge relatives
+         *
+         * @param object $model
+         * @param array $result
+         * @return array
+         */
+        private function __mergeRelatives(&$model, $results) {
+
+                if (count($results) > 0) {
+                        $_result = array();
+                        foreach ($results as $i => $node) {
+                                $results[$i]['Distance'] = $this->__relatives[$node['Node']['id']]['distance'];
+                        }
+                }
+                return $results;
         }
 
 }
