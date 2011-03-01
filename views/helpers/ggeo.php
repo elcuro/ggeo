@@ -32,13 +32,13 @@ class GgeoHelper extends AppHelper {
         }
 
         /**
-         * map function
+         * map helper
          * return data for element
          *
          * @param array $options
          * @return void
          */
-        public function map($options) {
+        public function map($options = array()) {
 
                 if (isset($this->Layout->View->viewVars['node']['GgeoGeo']['id'])) {
                         $node = $this->Layout->View->viewVars['node'];
@@ -48,13 +48,29 @@ class GgeoHelper extends AppHelper {
                                 'id' => 'ggeo-map-'.$node['GgeoGeo']['id'],
                                 'style' => 'width:275px;height:275px'
                             ));
-                        $options = array_merge($_options, $options);
+                        $options = Set::merge($_options, $options);
                         return array(
                             'options' => $options,
                             'node' => $this->Layout->View->viewVars['node']);
                 }
 
                 return FALSE;
+        }
+
+        /**
+         * Geo relative nodes
+         *
+         * @param array $options
+         * @return void
+         */
+        public function relatives($options = array()) {
+
+                if (isset($this->Layout->View->viewVars['relatives_for_layout'])) {
+                        return $this->Layout->View->viewVars['relatives_for_layout'];
+                }
+
+                return FALSE;
+
         }
 
 }
