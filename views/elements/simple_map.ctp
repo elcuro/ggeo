@@ -10,6 +10,7 @@ if ($map = $this->Ggeo->map($options)) {
         var map<?php echo $node_geo['id'];?> = new GMap2(document.getElementById("ggeo-map-<?php echo $node_geo['id'];?>"));
         var point<?php echo $node_geo['id'];?> = new GLatLng(<?php echo $node_geo['lat'];?>, <?php echo $node_geo['lon'];?>);
         map<?php echo $node_geo['id'];?>.setMapType(<?php echo $map['options']['mapType'];?>);
+        map<?php echo $node_geo['id'];?>.addControl(new GSmallMapControl());;
         map<?php echo $node_geo['id'];?>.setCenter(point<?php echo $node_geo['id'];?>, 13);
         map<?php echo $node_geo['id'];?>.addOverlay(new GMarker(point<?php echo $node_geo['id'];?>));
 </script>
