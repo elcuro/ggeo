@@ -1,7 +1,6 @@
 <?php
 $options = compact('mapType', 'tagAttributes');
 if ($map = $this->Ggeo->map($options)) {
-        echo $this->Html->tag('h3', __('Map', true));
         echo $this->Ggeo->loadGmap();
         echo $this->Html->tag('div', '', $map['options']['tagAttributes']);
         $node_geo = $map['node']['GgeoGeo'];
