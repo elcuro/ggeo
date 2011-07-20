@@ -57,21 +57,5 @@ class GgeoHelper extends AppHelper {
                 return FALSE;
         }
 
-        /**
-         * Geo relative nodes
-         *
-         * @param array $options
-         * @return void
-         */
-        public function relatives($options = array()) {
-
-                if (isset($this->Layout->View->viewVars['relatives_for_layout'])) {
-                        return $this->Layout->View->viewVars['relatives_for_layout'];
-                }
-
-                return FALSE;
-
-        }
-
 }
 ?>

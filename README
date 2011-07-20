@@ -38,6 +38,11 @@ Map is available only in NodesController->View action
 
 View relatives:
 Use block in Admin->Blocks with alias "ggeo_relatives" (created during activation)
+
+For custom distance and node type use syntax:
+e.g. [element:relatives distance="10" node_type="page"],
+and copy relatives.ctp element from plugin dir to your theme elements dir
+
 Default region for this block is "right".
 Relatives is available only in NodesController->View action
 
