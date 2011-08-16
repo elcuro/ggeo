@@ -19,7 +19,7 @@ class GgeoGeosSchema extends CakeSchema {
             'node_id' => array('type' => 'integer', 'null' => false, 'lenght' => 11),
             'lat' => array('type' => 'string', 'null' => false),
             'lon' => array('type' => 'string', 'null' => false),
-            'radius' => array('type' => 'float', 'null' => true, 'default' => 1),
+            'radius' => array('type' => 'float', 'null' => true, 'default' => 10),
             'created' => array('type' => 'timestamp', 'null' => false, 'length' => NULL),
             'updated' => array('type' => 'timestamp', 'null' => false, 'length' => NULL),
             'tableParameters' => array('charset' => 'utf8', 'engine' => 'MyISAM')

@@ -2,9 +2,9 @@
 
 echo $this->Ggeo->loadGMap();
 
-echo $form->input('GgeoGeo.id');
-echo $form->hidden('GgeoGeo.lat');
-echo $form->hidden('GgeoGeo.lon');
+echo $this->Form->input('GgeoGeo.id');
+echo $this->Form->hidden('GgeoGeo.lat');
+echo $this->Form->hidden('GgeoGeo.lon');
 
 echo $html->div('',
         $html->link(__('Delete this geo', true), '#', array('onclick' => 'deleteGeo();return false;')),
@@ -18,6 +18,7 @@ echo $html->div('',
 </a>
 
 <div id="gmap" style="width: 800px; height: 450px;"></div>
+<?php echo $this->Form->input('GgeoGeo.radius', array('size' => 2)); ?>
 
 <script type="text/javascript">
         var map = new GMap2(document.getElementById("gmap"));
@@ -70,6 +71,7 @@ echo $html->div('',
                 map.addOverlay(marker);
                 document.getElementById('GgeoGeoLon').value = point.x;
                 document.getElementById('GgeoGeoLat').value = point.y;
+                document.getElementById('GgeoGeoRadius').value = 10;
                 document.getElementById('delete-geo').style.visibility = 'visible';
         }
 
@@ -88,6 +90,7 @@ echo $html->div('',
                 map.setCenter(new GLatLng(<?php echo Configure::read('Ggeo.default_lat_lon');?>), 11);
                 document.getElementById('GgeoGeoLon').value = '';
                 document.getElementById('GgeoGeoLat').value = '';
+                document.getElementById('GgeoGeoRadius').value = '';
                 document.getElementById('delete-geo').style.visibility = 'hidden';
         }
 
