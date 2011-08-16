@@ -126,6 +126,7 @@ class GgeoBehavior extends ModelBehavior {
 
         /**
          * Merge relatives
+         * TODO: sort by distance, distance to node fields
          *
          * @param object $model
          * @param array $result
@@ -136,8 +137,9 @@ class GgeoBehavior extends ModelBehavior {
                 if (count($results) > 0) {
                         $_result = array();
                         foreach ($results as $i => $node) {
-                                $results[$i]['Distance'] = $this->__relatives[$node['Node']['id']]['distance'];
+                                $results[$i]['Node']['distance'] = $this->__relatives[$node['Node']['id']]['distance'];
                         }
+                        $results = Set::sort($results, '{n}.Node.distance', 'asc');
                 }
                 return $results;
         }
