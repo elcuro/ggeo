@@ -39,7 +39,8 @@ class GgeoComponent extends Object {
                                 'from_lon' => $node['GgeoGeo']['lon'],
                                 'distance' => $node['GgeoGeo']['radius']
                             ),
-                            'conditions' => array('Node.id <>' => $node['Node']['id']),
+                            'conditions' => array(
+                                'Node.id <>' => $node['Node']['id']),
                             'cache' => array(
                                 'config' => 'ggeo',
                                 'prefix' => 'node_plugin_ggeo_relatives')

@@ -108,6 +108,10 @@ class GgeoActivation {
                         'status' => 1
                         ))) return false;
 
+                // accos
+                $controller->Croogo->addAco('GgeoGeos/nodesNear', array('registered', 'public'));
+                $controller->Croogo->addAco('GgeoGeos/termNear', array('registered', 'public'));
+
         }
 
         /**
