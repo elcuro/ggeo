@@ -30,6 +30,7 @@ class TestGgeoGeosController extends GgeoGeosController {
 
 }
 
+
 class GgeoGeosControllerTestCase extends CakeTestCase {
 
         public $fixtures = array(
