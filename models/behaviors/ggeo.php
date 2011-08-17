@@ -90,16 +90,17 @@ class GgeoBehavior extends ModelBehavior {
          */
         private function __queryRelatives(&$model, $query = array()) {
 
-                $default_lat_lon = explode(',', Configure::read('Ggeo.default_lat_lon'));
                 $_query = array(
                     'relatives' => array(
-                        'from_lat' => $default_lat_lon[0],
-                        'from_lon' => $default_lat_lon[1],
                         'distance' => 10
                     )
                 );
                 $query = Set::merge($_query, $query);
 
+                if (!isset($query['relatives']['from_lat']) && !isset($query['relatives']['from_lon'])) {
+                        $this->_relatives = false;
+                        return $query;
+                }
                 // haversine formula
                 $from_lat = $query['relatives']['from_lat'];
                 $from_lon = $query['relatives']['from_lon'];
