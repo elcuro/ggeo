@@ -148,6 +148,21 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
         }
 
 
+        public function testNodesNearFilterType() {
+
+                $this->initNodesNearBySlug('point-1');
+                $this->GgeoGeos->params['named']['distance'] = 500;
+                $this->GgeoGeos->params['named']['type'] = 'page';
+
+                $this->GgeoGeos->beforeFilter();
+                $this->GgeoGeos->Component->startup($this->GgeoGeos);
+                $this->GgeoGeos->nodesNear();
+
+                $this->assertEqual(1, count($this->GgeoGeos->viewVars['nodes']));
+                $this->assertEqual(2, $this->GgeoGeos->viewVars['nodes'][0]['Node']['id']);
+        }
+
+
         public function endTest() {
                 $this->GgeoGeos->Session->destroy();
                 unset($this->GgeoGeos);

@@ -14,6 +14,23 @@ class GgeoGeosController extends GgeoAppController {
         public $name ='GgeoGeos';
 
         /**
+         * Before filter
+         *
+         * @return void
+         */
+        public function beforeFilter() {
+
+                parent::beforeFilter();
+
+                if (isset($this->params['slug'])) {
+                        $this->params['named']['slug'] = $this->params['slug'];
+                }
+                if (isset($this->params['type'])) {
+                        $this->params['named']['type'] = $this->params['type'];
+                }
+        }
+
+        /**
          * All nodes nar node
          *
          * @param string $slug
@@ -71,6 +88,10 @@ class GgeoGeosController extends GgeoAppController {
                         'Node.visibility_roles LIKE' => '%"' . $this->Croogo->roleId . '"%',
                     )
                 );
+                if (isset($this->params['named']['type'])) {
+                        $options['conditions']['Node.type'] = $this->params['named']['type'];
+                }
+
                 $options['cache'] = array(
                     'prefix' => 'nodes_plugin_ggeo_nodes_near',
                     'config' => 'nodes_index',
