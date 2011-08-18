@@ -1,5 +1,5 @@
 <?php
-if (is_array($this->viewVars['relatives_for_layout'])) {
+if (isset($this->viewVars['relatives_for_layout']) && is_array($this->viewVars['relatives_for_layout'])) {
         $nodes_output = '';
         foreach ($this->viewVars['relatives_for_layout'] as $node) {
                 $node_link = $this->Html->link($node['Node']['title'], $node['Node']['url']);

@@ -2,7 +2,7 @@
         Croogo::hookRoutes('Ggeo');
 
         Croogo::hookBehavior('Node', 'Ggeo.Ggeo');
-        Croogo::hookHelper('Nodes', 'Ggeo.Ggeo');
+        Croogo::hookHelper('*', 'Ggeo.Ggeo');
         Croogo::hookComponent('Nodes', 'Ggeo.Ggeo');
 
         Croogo::hookAdminMenu('Ggeo');

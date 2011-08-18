@@ -46,7 +46,8 @@ class GgeoHelper extends AppHelper {
                             'mapType' => 'G_HYBRID_MAP',
                             'tagAttributes' => array(
                                 'id' => 'ggeo-map-'.$node['GgeoGeo']['id'],
-                                'class' => 'ggeo-map'
+                                'class' => 'ggeo-map',
+                                'style' => 'width: 200px;height: 200px'
                             ));
                         $options = Set::merge($_options, $options);
                         return array(
