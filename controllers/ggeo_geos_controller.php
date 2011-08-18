@@ -36,7 +36,7 @@ class GgeoGeosController extends GgeoAppController {
          * @param string $slug
          * @return void
          */
-        public function nodes() {
+        public function near() {
 
                 $node = false;
                 if (isset($this->params['named']['slug']) && ($this->params['named']['slug'] <> '')) {
@@ -88,17 +88,36 @@ class GgeoGeosController extends GgeoAppController {
                         'Node.visibility_roles LIKE' => '%"' . $this->Croogo->roleId . '"%',
                     )
                 );
+                $options['cache'] = array(
+                    'prefix' => 'nodes_plugin_ggeo_nodes_near_',
+                    'config' => 'nodes_index',
+                );
+
                 if (isset($this->params['named']['type'])) {
                         $options['conditions']['Node.type'] = $this->params['named']['type'];
                 }
 
-                $options['cache'] = array(
-                    'prefix' => 'nodes_plugin_ggeo_nodes_near',
-                    'config' => 'nodes_index',
-                );
+                if (isset($this->params['named']['term_slug'])) {
+                        $term = $this->Node->Taxonomy->Term->find('first', array(
+                            'conditions' => array(
+                                'Term.slug' => $this->params['named']['term_slug'],
+                            ),
+                            'cache' => array(
+                                'name' => 'term_'.$this->params['named']['term_slug'],
+                                'config' => 'nodes_term',
+                            ),
+                        ));
+                        if (isset($term['Term']['id'])) {
+                                $options['conditions']['Node.terms LIKE'] = '%' . $this->params['named']['term_slug'] . '%';
+                                $this->set('term', $term);
+                        } else {
+                                $this->Session->setFlash(__d('ggeo', 'Invalid term', true), 'default', array('class' => 'error'));
+                                $this->redirect('/');
+                        }
+                }
 
                 $nodes = $this->Node->find('all', $options);
-                $this->set('nodes', $nodes);
+                $this->set(compact('node', 'nodes'));
                 
         }
 
