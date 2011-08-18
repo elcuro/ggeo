@@ -96,6 +96,14 @@ class GgeoGeosController extends GgeoAppController {
                         'Node.visibility_roles LIKE' => '%"' . $this->Croogo->roleId . '"%',
                     )
                 );
+                $options['contain'] = array(
+                    'Meta',
+                    'Taxonomy' => array(
+                        'Term',
+                        'Vocabulary',
+                    ),
+                    'User',
+                );
                 $options['cache'] = array(
                     'prefix' => 'nodes_plugin_ggeo_nodes_near_',
                     'config' => 'nodes_index',
