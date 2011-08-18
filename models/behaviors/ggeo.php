@@ -83,6 +83,18 @@ class GgeoBehavior extends ModelBehavior {
         }
 
         /**
+         * After delete callback
+         *
+         * @param object $model
+         * @return void
+         */
+        public function  afterDelete(&$model) {
+                parent::afterDelete($model);
+
+                $model->GgeoGeo->deleteAll(array('node_id' => $model->id));
+        }
+
+        /**
          * Find by distance
          *
          * @param array $var
