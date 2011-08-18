@@ -167,7 +167,7 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
 
                 $this->initNodesNearBySlug('point-1');
                 $this->GgeoGeos->params['named']['distance'] = 50;
-                $this->GgeoGeos->params['named']['term_slug'] = 'uncategorized';
+                $this->GgeoGeos->params['named']['termslug'] = 'uncategorized';
 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
@@ -182,7 +182,7 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
 
                 $this->initNodesNearBySlug('point-1');
                 $this->GgeoGeos->params['named']['distance'] = 50;
-                $this->GgeoGeos->params['named']['term_slug'] = 'dfsdfssads';
+                $this->GgeoGeos->params['named']['termslug'] = 'dfsdfssads';
 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
