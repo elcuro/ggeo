@@ -34,6 +34,7 @@ echo $html->div('',
                 setPoint(point);
         } else {
                 map.setCenter(new GLatLng(<?php echo Configure::read('Ggeo.default_lat_lon');?>), 11);
+                document.getElementById('GgeoGeoRadius').value = 10;
                 document.getElementById('delete-geo').style.visibility = 'hidden';
         }
 
@@ -70,8 +71,7 @@ echo $html->div('',
                 var marker = new GMarker(point);
                 map.addOverlay(marker);
                 document.getElementById('GgeoGeoLon').value = point.x;
-                document.getElementById('GgeoGeoLat').value = point.y;
-                document.getElementById('GgeoGeoRadius').value = 10;
+                document.getElementById('GgeoGeoLat').value = point.y;                
                 document.getElementById('delete-geo').style.visibility = 'visible';
         }
 
