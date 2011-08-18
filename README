@@ -34,8 +34,7 @@ Don't remember to save
 View map:
 Use block in Admin->Blocks with alias "ggeo_map" (created during activation)
 Default region for this block is "right".
-Map is available only in NodesController->View action
-You must set style (width and height) for "ggeo-map" class
+Map is available every where, where is valid $node in view
 
 View relatives:
 Use block in Admin->Blocks with alias "ggeo_relatives" (created during activation)
