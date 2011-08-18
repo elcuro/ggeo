@@ -14,7 +14,7 @@
                 <div id="node-<?php echo $this->Layout->node('id'); ?>" class="node node-type-<?php echo $this->Layout->node('type'); ?>">
                         <h2>
                         <?php echo $html->link($this->Layout->node('title'), $this->Layout->node('url')); ?>
-                        , <?php echo round($this->Layout->node('distance'), 1);?> km
+                        , <?php echo __d('geo', 'distance', true).' '.round($this->Layout->node('distance'), 1);?> km
                 </h2>
                 <?php
                         echo $this->Layout->nodeInfo();
