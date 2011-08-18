@@ -147,6 +147,8 @@ class GgeoActivation {
          */
         public function onDeactivation(&$controller) {
 
+                // remove aco
+                $controller->Croogo->removeAco('GgeoGeos');
                 // remove ggeomap block
                 $controller->Block->deleteAll(array('Block.alias' => 'ggeo_map'));
                 // remove ggeo_relatives block
