@@ -77,7 +77,7 @@ class GgeoGeosController extends GgeoAppController {
                 if (isset($this->params['named']['distance']) && is_numeric($this->params['named']['distance'])) {
                         $distance = $this->params['named']['distance'];
                 } else {
-                        $distance = 10;
+                        $distance = $node['GgeoGeo']['radius'];
                 }
                 $title_for_layout = __d('geo', 'Neighborhood of', true).' '.$node['Node']['title'].', '.
                         __d('geo', 'distance', true).' '.$distance.' km';
