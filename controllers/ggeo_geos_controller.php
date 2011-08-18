@@ -36,7 +36,7 @@ class GgeoGeosController extends GgeoAppController {
          * @param string $slug
          * @return void
          */
-        public function nodesNear() {
+        public function nodes() {
 
                 $node = false;
                 if (isset($this->params['named']['slug']) && ($this->params['named']['slug'] <> '')) {

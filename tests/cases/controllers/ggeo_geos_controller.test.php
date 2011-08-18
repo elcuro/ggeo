@@ -91,7 +91,7 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
-                $this->GgeoGeos->nodesNear();
+                $this->GgeoGeos->nodes();
 
                 $this->assertEqual($this->GgeoGeos->redirectUrl, '/');
         }
@@ -103,7 +103,7 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
-                $this->GgeoGeos->nodesNear();
+                $this->GgeoGeos->nodes();
 
                 $this->assertEqual($this->GgeoGeos->redirectUrl, '/');
         }
@@ -115,19 +115,19 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
-                $this->GgeoGeos->nodesNear();
+                $this->GgeoGeos->nodes();
 
                 $this->assertEqual($this->GgeoGeos->redirectUrl, '/');
         }
         
         
-        public function testNodesNear() {
+        public function testnodes() {
 
                 $this->initNodesNearBySlug('point-1');
                 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
-                $this->GgeoGeos->nodesNear();
+                $this->GgeoGeos->nodes();
 
                 $this->assertEqual(2, count($this->GgeoGeos->viewVars['nodes']));
                 $this->assertEqual(55, $this->GgeoGeos->viewVars['nodes'][0]['Node']['id']);
@@ -141,7 +141,7 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
-                $this->GgeoGeos->nodesNear();
+                $this->GgeoGeos->nodes();
 
                 $this->assertEqual(4, count($this->GgeoGeos->viewVars['nodes']));
                 $this->assertEqual(55, $this->GgeoGeos->viewVars['nodes'][0]['Node']['id']);
@@ -156,7 +156,7 @@ class GgeoGeosControllerTestCase extends CakeTestCase {
 
                 $this->GgeoGeos->beforeFilter();
                 $this->GgeoGeos->Component->startup($this->GgeoGeos);
-                $this->GgeoGeos->nodesNear();
+                $this->GgeoGeos->nodes();
 
                 $this->assertEqual(1, count($this->GgeoGeos->viewVars['nodes']));
                 $this->assertEqual(2, $this->GgeoGeos->viewVars['nodes'][0]['Node']['id']);
