@@ -28,6 +28,9 @@ class GgeoGeosController extends GgeoAppController {
                 if (isset($this->params['type'])) {
                         $this->params['named']['type'] = $this->params['type'];
                 }
+                if (isset($this->params['termslug'])) {
+                        $this->params['named']['termslug'] = $this->params['termslug'];
+                }
         }
 
         /**
@@ -70,10 +73,15 @@ class GgeoGeosController extends GgeoAppController {
                         $this->redirect('/');
                 } 
 
-                $distance = 10;
+                
                 if (isset($this->params['named']['distance']) && is_numeric($this->params['named']['distance'])) {
                         $distance = $this->params['named']['distance'];
+                } else {
+                        $distance = 10;
                 }
+                $title_for_layout = __d('geo', 'Neighborhood of', true).' '.$node['Node']['title'].', '.
+                        __d('geo', 'distance', true).' '.$distance.' km';
+
                 $options['relatives'] = array(
                     'from_lat' => $node['GgeoGeo']['lat'],
                     'from_lon' => $node['GgeoGeo']['lon'],
@@ -97,27 +105,28 @@ class GgeoGeosController extends GgeoAppController {
                         $options['conditions']['Node.type'] = $this->params['named']['type'];
                 }
 
-                if (isset($this->params['named']['term_slug'])) {
+                if (isset($this->params['named']['termslug'])) {
                         $term = $this->Node->Taxonomy->Term->find('first', array(
                             'conditions' => array(
-                                'Term.slug' => $this->params['named']['term_slug'],
+                                'Term.slug' => $this->params['named']['termslug'],
                             ),
                             'cache' => array(
-                                'name' => 'term_'.$this->params['named']['term_slug'],
+                                'name' => 'term_'.$this->params['named']['termslug'],
                                 'config' => 'nodes_term',
                             ),
                         ));
                         if (isset($term['Term']['id'])) {
-                                $options['conditions']['Node.terms LIKE'] = '%' . $this->params['named']['term_slug'] . '%';
+                                $options['conditions']['Node.terms LIKE'] = '%' . $this->params['named']['termslug'] . '%';
                                 $this->set('term', $term);
+                                $title_for_layout = $term['Term']['title'].' '.__d('geo', 'near', true).' '.$node['Node']['title'];
                         } else {
                                 $this->Session->setFlash(__d('ggeo', 'Invalid term', true), 'default', array('class' => 'error'));
                                 $this->redirect('/');
                         }
                 }
-
+               
                 $nodes = $this->Node->find('all', $options);
-                $this->set(compact('node', 'nodes'));
+                $this->set(compact('node', 'nodes', 'title_for_layout'));
                 
         }
 

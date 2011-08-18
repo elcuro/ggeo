@@ -1,4 +1,6 @@
 <?php
+        Croogo::hookRoutes('Ggeo');
+
         Croogo::hookBehavior('Node', 'Ggeo.Ggeo');
         Croogo::hookHelper('Nodes', 'Ggeo.Ggeo');
         Croogo::hookComponent('Nodes', 'Ggeo.Ggeo');
